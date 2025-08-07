@@ -1,0 +1,27 @@
+{
+  "name": "final-project",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "backend": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "vite": "^7.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Malikantsi/final-project.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Malikantsi/final-project/issues"
+  },
+  "homepage": "https://github.com/Malikantsi/final-project#readme"
+}
