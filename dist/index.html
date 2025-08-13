@@ -4,60 +4,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Malikantsi Lekhoana">
+    <meta property="og:title" content="Wonders Toy Store  ">
+    <meta property="og:description"
+        content="A home page that displays some of our products on the spotlight and a little bit about our store.">
+    <meta property="og:image" content="https://github.com/Malikantsi/wdd231/blob/main/final/images/hero.webp">
+    <!-- update later-->
+    <meta property="og:url" content="https://malikantsi.github.io/wdd231/final/index.html"> <!-- update later-->
     <title>Wonders Toy Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="styles/base.css">
+        rel="stylesheet" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script type="module" crossorigin src="/assets/index-DUXgWmjU.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BDJQYDCT.css">
 </head>
 
 <body>
     <header>
-        <div class="container header-content">
-            <img src="images/logo.png" alt="Wonders Logo" class="logo" />
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        <div class="top-bar">
+            <!-- Logo & Socials -->
+            <div class="left-section">
+                <img src="/images/Shop Logo.webp" alt="Wonders Logo" class="logo" />
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
 
+            <!-- Search Bar -->
+            <div class="search-section">
+                <input type="text" placeholder="Type to search..." />
+                <button id="search-btn">
+                    <a href="#"><i class="fas fa-search search-icon"></i></a>
+                </button>
+            </div>
+
+            <!-- Login & Cart -->
+            <div class="right-section">
+                <a href="/src/cart/index.html"><i class="fas fa-shopping-bag"></i> Cart</a>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <ul>
+
+                <li><a href="index.html">Home</a></li>
+                <li><a href="/src/products/products.html">Shop</a></li>
+                <li><a href="products.html?category=Halloween">Halloween</a></li>
+                <li><a href="products.html?category=gifts">Gifts & Toys</a></li>
+                <li><a href="products.html?category=special">Sales & Specials</a></li>
+                <li><a href="products.html?category=Party Rental">Party Rental</a></li>
+                <li><a href="/src/aboutUs/about-us.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
         <section class="hero">
-            <div class="container hero-content">
-                <h1>Welcome to Wonders</h1>
-                <p>Where joy and imagination come together! Explore our magical collection of toys for kids of all ages.
-                </p>
-                <a href="#" class="button">Shop Now</a>
+            <div class="hero-container">
+                <div class="hero-slideshow">
+                    <div class="hero-slide active">
+                        <img src="/images/hero-01.webp" alt="Hero Image 1">
+                        <div class="hero-text">
+                            <h1>Welcome to Our Site</h1>
+                            <p>Check out some of our most loved toys
+                            </p>
+                            <a href="products.html" class="btn btn-primary">Shop Now</a>
+
+                        </div>
+                    </div>
+
+                    <div class="hero-slide">
+                        <img src="/images/hero-02.jpg" alt="Hero Image 2">
+                        <div class="hero-text">
+                            <h1>Discover More</h1>
+                            <p>Second hero image caption</p>
+                            <a href="products.html" class="btn btn-primary">Shop Now</a>
+
+                        </div>
+                    </div>
+                    <div class="hero-slide">
+                        <img src="/images/hero-04.jpg" alt="Hero Image 3">
+                        <div class="hero-text">
+                            <h1>Join Us Today</h1>
+                            <p>Third hero image caption</p>
+                            <a href="products.html" class="btn btn-primary">Shop Now</a>
+
+                        </div>
+                    </div>
+
+                    <!-- Navigation dots -->
+                    <div class="slide-nav">
+                        <span class="nav-dot active" data-slide="0"></span>
+                        <span class="nav-dot" data-slide="1"></span>
+                        <span class="nav-dot" data-slide="2"></span>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="features">
+            <h2>Popular Themes</h2>
             <div class="container grid-3">
+
+
                 <div class="card">
                     <h3>Educational Toys</h3>
+                    <img src="/images/educational.webp" alt="">
                     <p>Play and learn with our collection of brain-boosting toys.</p>
+                    <a href="products.html?category=educational" class="btn btn-outline">Explore</a>
+
                 </div>
                 <div class="card">
                     <h3>Soft & Cuddly</h3>
+                    <img src="/images/stuffed-toy.webp" alt="">
                     <p>Discover our plush toy collection perfect for hugs and snuggles.</p>
+                    <a href="products.html?category=plush" class="btn btn-outline">Explore</a>
+
                 </div>
                 <div class="card">
                     <h3>Outdoor Fun</h3>
+                    <img src="/images/outdoor.webp" alt="">
                     <p>Get moving with toys for sunshine and playtime in the park.</p>
+                    <a href="products.html?category=outdoor" class="btn btn-outline">Explore</a>
+                </div>
+            </div>
+        </section>
+        <section class="on-sale">
+            <div class="container">
+                <h3>Sale up to 50%</h3>
+                <p>Here's why our products are a game changer for our customers</p>
+                <a href="products.html?onsale=true" class="btn btn-secondary">View Sale Items</a>
+            </div>
+
+        </section>
+
+        <section class="featured-products">
+            <div class="container">
+                <h2>Featured Toys</h2>
+                <div class="products-grid">
+                    <!-- Products will be loaded via JavaScript dont forget -->
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2>What Parents Say</h2>
+                <div class="testimonial-slider">
+                    <!-- Testimonials will be loaded via JavaScript -->
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+
+
+    <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 Wonders Toy Store. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>WonderNest Finds</h3>
+                    <p>Bringing joy and quality toys to children everywhere.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="/src/aboutUs/about-us.html">About Us</a></li>
+                        <li><a href="/src/aboutUs/about-us.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Email: info@wondernest.com</p>
+                    <p>Phone: (011) 433-6950</p>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Malikantsi 2025 WonderNest Finds. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
