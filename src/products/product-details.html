@@ -39,13 +39,11 @@
             <!-- Search Bar -->
             <div class="search-section">
                 <input type="text" placeholder="Type to search..." />
-                <button id="search-btn">
-                    <a href="#"><i class="fas fa-search search-icon"></i></a>
-                </button>
             </div>
 
             <!-- Login & Cart -->
             <div class="right-section">
+                <a href="#"><i class="fas fa-user"></i> Login</a>
                 <a href="/src/cart/index.html"><i class="fas fa-shopping-bag"></i> Cart</a>
             </div>
         </div>
@@ -53,117 +51,109 @@
         <!-- Navigation Menu -->
         <nav class="nav-menu">
             <ul>
-
                 <li><a href="index.html">Home</a></li>
                 <li><a href="/src/products/products.html">Shop</a></li>
                 <li><a href="products.html?category=Halloween">Halloween</a></li>
                 <li><a href="products.html?category=gifts">Gifts & Toys</a></li>
                 <li><a href="products.html?category=special">Sales & Specials</a></li>
                 <li><a href="products.html?category=Party Rental">Party Rental</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#about">About</a></li>>
             </ul>
         </nav>
     </header>
-    <main>
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-slideshow">
-                    <div class="hero-slide active">
-                        <img src="/images/hero-01.webp" alt="Hero Image 1">
-                        <div class="hero-text">
-                            <h1>Welcome to Our Site</h1>
-                            <p>Check out some of our most loved toys
-                            </p>
-                            <a href="products.html" class="btn btn-primary">Shop Now</a>
 
-                        </div>
+
+    <main class="product-detail-page">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> &gt;
+                <a href="products.html">Shop</a> &gt;
+                <span id="product-category">Category</span> &gt;
+                <span id="product-title">Product</span>
+            </div>
+
+            <div class="product-detail-grid">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img id="main-product-image" src="" alt="Main product image">
                     </div>
-
-                    <div class="hero-slide">
-                        <img src="/images/hero-02.jpg" alt="Hero Image 2">
-                        <div class="hero-text">
-                            <h1>Discover More</h1>
-                            <p>Second hero image caption</p>
-                            <a href="products.html" class="btn btn-primary">Shop Now</a>
-
-                        </div>
+                    <div class="thumbnail-gallery">
+                        <!-- Thumbnails will be loaded via JavaScript -->
                     </div>
-                    <div class="hero-slide">
-                        <img src="/images/hero-04.jpg" alt="Hero Image 3">
-                        <div class="hero-text">
-                            <h1>Join Us Today</h1>
-                            <p>Third hero image caption</p>
-                            <a href="products.html" class="btn btn-primary">Shop Now</a>
+                </div>
 
+                <div class="product-info">
+                    <h1 id="detail-product-title">Product Title</h1>
+                    <div class="product-meta">
+                        <div class="product-rating">
+                            <span id="detail-product-rating">★★★★☆</span>
+                            <span id="review-count">(24 reviews)</span>
                         </div>
+                        <div class="product-stock" id="stock-status">In Stock</div>
                     </div>
-
-                    <!-- Navigation dots -->
-                    <div class="slide-nav">
-                        <span class="nav-dot active" data-slide="0"></span>
-                        <span class="nav-dot" data-slide="1"></span>
-                        <span class="nav-dot" data-slide="2"></span>
+                    <div class="product-price" id="detail-product-price">$29.99</div>
+                    <div class="product-description">
+                        <p id="detail-product-description">Product description goes here...</p>
+                    </div>
+                    <div class="product-age-group">
+                        <strong>Age Range:</strong> <span id="age-range">3-5 years</span>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" id="product-quantity">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="btn btn-primary" id="add-to-cart-btn">Add to Cart</button>
+                        <button class="btn btn-outline" id="wishlist-btn">Add to Wishlist</button>
+                    </div>
+                    <div class="product-shipping">
+                        <div class="shipping-info">
+                            <img src="assets/truck-icon.svg" alt="Shipping">
+                            <span>Free shipping on orders over $50</span>
+                        </div>
+                        <div class="returns-info">
+                            <img src="assets/return-icon.svg" alt="Returns">
+                            <span>30-day easy returns</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section class="features">
-            <h2>Popular Themes</h2>
-            <div class="container grid-3">
-
-
-                <div class="card">
-                    <h3>Educational Toys</h3>
-                    <img src="/images/educational.webp" alt="">
-                    <p>Play and learn with our collection of brain-boosting toys.</p>
-                    <a href="products.html?category=educational" class="btn btn-outline">Explore</a>
-
+            <div class="product-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="description">Description</button>
+                    <button class="tab-btn" data-tab="details">Details</button>
+                    <button class="tab-btn" data-tab="reviews">Reviews</button>
                 </div>
-                <div class="card">
-                    <h3>Soft & Cuddly</h3>
-                    <img src="/images/stuffed-toy.webp" alt="">
-                    <p>Discover our plush toy collection perfect for hugs and snuggles.</p>
-                    <a href="products.html?category=plush" class="btn btn-outline">Explore</a>
-
-                </div>
-                <div class="card">
-                    <h3>Outdoor Fun</h3>
-                    <img src="/images/outdoor.webp" alt="">
-                    <p>Get moving with toys for sunshine and playtime in the park.</p>
-                    <a href="products.html?category=outdoor" class="btn btn-outline">Explore</a>
+                <div class="tabs-content">
+                    <div class="tab-pane active" id="description-tab">
+                        <h3>About this item</h3>
+                        <p id="full-description">Full description goes here...</p>
+                    </div>
+                    <div class="tab-pane" id="details-tab">
+                        <h3>Product Details</h3>
+                        <ul id="details-list">
+                            <!-- Details will be loaded via JavaScript -->
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="reviews-tab">
+                        <h3>Customer Reviews</h3>
+                        <div class="reviews-container">
+                            <!-- Reviews will be loaded via JavaScript -->
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-        <section class="on-sale">
-            <div class="container">
-                <h3>Sale up to 50%</h3>
-                <p>Here's why our products are a game changer for our customers</p>
-                <a href="products.html?onsale=true" class="btn btn-secondary">View Sale Items</a>
-            </div>
 
-        </section>
-
-        <section class="featured-products">
-            <div class="container">
-                <h2>Featured Toys</h2>
+            <section class="related-products">
+                <h2>You May Also Like</h2>
                 <div class="products-grid">
-                    <!-- Products will be loaded via JavaScript dont forget -->
+                    <!-- Related products will be loaded via JavaScript -->
                 </div>
-            </div>
-        </section>
-
-        <section class="testimonials">
-            <div class="container">
-                <h2>What Parents Say</h2>
-                <div class="testimonial-slider">
-                    <!-- Testimonials will be loaded via JavaScript -->
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
-
-
 
     <footer class="main-footer">
         <div class="container">
@@ -205,6 +195,9 @@
         </div>
     </footer>
 
+
+    <script src="js/main.js"></script>
+    <script src="js/product-detail.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,18 @@
+/* this is just or the hero-container */
+
+@media (max-width: 768px) {
+    .hero-text {
+        bottom: 10%;
+        left: 5%;
+        right: 5%;
+        max-width: 90%;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1.2rem;
+    }
+}
