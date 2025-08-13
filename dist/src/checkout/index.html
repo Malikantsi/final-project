@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Malikantsi Lekhoana">
+    <meta property="og:title" content="Wonder finds Toy Store">
+    <meta property="og:description" content="A page that shows infomation on the order-details">
+    <meta property="og:image"
+        content="https://github.com/Malikantsi/final-project/blob/main/public/images/hero-04.webp">
+    <!-- update later-->
+    <meta property="og:url" content="https://malikantsi.github.io/wdd231/final/index.html"> <!-- update later-->
+    <title>Wonder finds Toy Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script type="module" crossorigin src="/assets/base-ZqPVw1iO.js"></script>
+  <script type="module" crossorigin src="/assets/product-DwlLAgfF.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/base-BDJQYDCT.css">
+</head>
+
+<body>
+    <header>
+        <div class="top-bar">
+            <!-- Logo & Socials -->
+            <div class="left-section">
+                <img src="/images/Shop Logo.webp" alt="Wonder Finds Logo" class="logo" />
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-section">
+                <input type="text" placeholder="Type to search..." />
+            </div>
+
+            <!-- Login & Cart -->
+            <div class="right-section">
+                <a href="#"><i class="fas fa-user"></i> Login</a>
+                <a href="/src/cart/index.html"><i class="fas fa-shopping-bag"></i> Cart</a>
+                <span class="cart-count">0</span>
+
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/src/products/products.html">Shop</a></li>
+                <li><a href="products.html?category=Halloween">Halloween</a></li>
+                <li><a href="products.html?category=gifts">Gifts & Toys</a></li>
+                <li><a href="products.html?category=special">Sales & Specials</a></li>
+                <li><a href="products.html?category=Party Rental">Party Rental</a></li>
+                <li><a href="/src/aboutUs/about-us.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main class="checkout-page">
+        <div class="container">
+            <h1>Checkout</h1>
+
+            <div class="checkout-grid">
+                <div class="checkout-form">
+                    <form id="payment-form">
+                        <h2>Shipping Information</h2>
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" name="full-name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Street Address</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <select id="state" name="state" required>
+                                    <option value="">Select State</option>
+                                    <!-- States will be populated via JS -->
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="zip">ZIP Code</label>
+                                <input type="text" id="zip" name="zip" required pattern="\d{5}(-\d{4})?">
+                            </div>
+                        </div>
+
+                        <h2>Payment Information</h2>
+
+                        <div class="form-group">
+                            <label for="card-name">Name on Card</label>
+                            <input type="text" id="card-name" name="card-name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" name="card-number" required pattern="\d{13,16}">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date</label>
+                                <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required
+                                    pattern="\d{2}/\d{2}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" name="cvv" required pattern="\d{3,4}">
+                            </div>
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="save-info" name="save-info">
+                            <label for="save-info">Save this information for next time</label>
+                        </div>
+
+                        <a href="/src/checkout/thankyou.html" type="submit" class="btn btn-primary"
+                            id="place-order">Place Order</a>
+                    </form>
+                </div>
+
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+                    <div class="order-items">
+                        <!-- Order items will be loaded here -->
+                    </div>
+
+                    <div class="summary-totals">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="order-subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span id="order-shipping">$5.99</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax</span>
+                            <span id="order-tax">$0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="order-total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Wonder Finds</h3>
+                    <p>Bringing joy and quality toys to children everywhere.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/src/products/products.html">Shop</a></li>
+                        <li><a href="/src/aboutUs/about-us.html">About Us</a></li>
+                        <li><a href="/src/aboutUs/about-us.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Email: info@wonderfinds.com</p>
+                    <p>Phone: (011) 433-6950</p>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Malikantsi 2025 Wonder Finds. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

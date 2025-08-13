@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Malikantsi Lekhoana">
+    <meta property="og:title" content="Wonder finds Toy Store  ">
+    <meta property="og:description" content="A thank you page with the summary of everythingthat has been ordered.">
+    <meta property="og:image"
+        content="https://github.com/Malikantsi/final-project/blob/main/public/images/hero-04.webp">
+    <!-- update later-->
+    <meta property="og:url" content="https://malikantsi.github.io/wdd231/final/index.html"> <!-- update later-->
+    <title>Wonder Finds Toy Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script type="module" crossorigin src="/assets/base-ZqPVw1iO.js"></script>
+  <script type="module" crossorigin src="/assets/product-DwlLAgfF.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/base-BDJQYDCT.css">
+</head>
+
+<body>
+    <header>
+        <div class="top-bar">
+            <!-- Logo & Socials -->
+            <div class="left-section">
+                <img src="/images/Shop Logo.webp" alt="Wonders Logo" class="logo" />
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-section">
+                <input type="text" placeholder="Type to search..." />
+            </div>
+
+            <!-- Login & Cart -->
+            <div class="right-section">
+                <a href="#"><i class="fas fa-user"></i> Login</a>
+                <a href="/src/cart/index.html"><i class="fas fa-shopping-bag"></i> Cart</a>
+                <span class="cart-count">0</span>
+
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/src/products/products.html">Shop</a></li>
+                <li><a href="/src/products/products.html?category=Halloween">Halloween</a></li>
+                <li><a href="products.html?category=gifts">Gifts & Toys</a></li>
+                <li><a href="products.html?category=special">Sales & Specials</a></li>
+                <li><a href="products.html?category=Party Rental">Party Rental</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="confirmation-page">
+        <div class="container">
+            <div class="confirmation-card">
+                <div class="confirmation-icon">✓</div>
+                <h1>Order Confirmed!</h1>
+                <p class="confirmation-message">Thank you for your purchase. Your order has been received and is being
+                    processed.</p>
+
+                <div class="order-details">
+                    <div class="detail-row">
+                        <span>Order Number</span>
+                        <span id="order-number">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Date</span>
+                        <span id="order-date">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Total</span>
+                        <span id="order-total">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Payment Method</span>
+                        <span id="payment-method">-</span>
+                    </div>
+                </div>
+
+                <div class="confirmation-actions">
+                    <a href="products.html" class="btn btn-primary">Continue Shopping</a>
+                    <a href="#" class="btn btn-outline" id="print-receipt">Print Receipt</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Wonder Finds</h3>
+                    <p>Bringing joy and quality toys to children everywhere.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/src/products/products.html">Shop</a></li>
+                        <li><a href="/src/aboutUs/about-us.html">About Us</a></li>
+                        <li><a href="/src/aboutUs/about-us.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Email: info@wonderfinds.com</p>
+                    <p>Phone: (011) 433-6950</p>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Malikantsi 2025 Wonder Finds. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

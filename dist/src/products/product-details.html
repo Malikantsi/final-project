@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Malikantsi Lekhoana">
+    <meta property="og:title" content="Wonder Finds Toy Store  ">
+    <meta property="og:description" content="A page where you can see the details of a product selected.">
+    <meta property="og:image"
+        content="https://github.com/Malikantsi/final-project/blob/main/public/images/hero-04.webp">
+    <!-- update later-->
+    <meta property="og:url" content="https://malikantsi.github.io/wdd231/final/index.html"> <!-- update later-->
+    <title>Wonder Finds Toy Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script type="module" crossorigin src="/assets/base-ZqPVw1iO.js"></script>
+  <script type="module" crossorigin src="/assets/main-FiAHJhhD.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/base-BDJQYDCT.css">
+</head>
+
+<body>
+    <header>
+        <div class="top-bar">
+            <!-- Logo & Socials -->
+            <div class="left-section">
+                <img src="/images/Shop Logo.webp" alt="Wonders Logo" class="logo" />
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-section">
+                <input type="text" placeholder="Type to search..." />
+            </div>
+
+            <!-- Login & Cart -->
+            <div class="right-section">
+                <a href="#"><i class="fas fa-user"></i> Login</a>
+                <a href="/src/cart/index.html"><i class="fas fa-shopping-bag"></i> Cart</a>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="/src/products/products.html">Shop</a></li>
+                <li><a href="products.html?category=Halloween">Halloween</a></li>
+                <li><a href="products.html?category=gifts">Gifts & Toys</a></li>
+                <li><a href="products.html?category=special">Sales & Specials</a></li>
+                <li><a href="products.html?category=Party Rental">Party Rental</a></li>
+                <li><a href="#about">About</a></li>>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main class="product-detail-page">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> &gt;
+                <a href="products.html">Shop</a> &gt;
+                <span id="product-category">Category</span> &gt;
+                <span id="product-title">Product</span>
+            </div>
+
+            <div class="product-detail-grid">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img id="main-product-image" src="" alt="Main product image">
+                    </div>
+                    <div class="thumbnail-gallery">
+                        <!-- Thumbnails will be loaded via JavaScript -->
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <h1 id="detail-product-title">Product Title</h1>
+                    <div class="product-meta">
+                        <div class="product-rating">
+                            <span id="detail-product-rating">★★★★☆</span>
+                            <span id="review-count">(24 reviews)</span>
+                        </div>
+                        <div class="product-stock" id="stock-status">In Stock</div>
+                    </div>
+                    <div class="product-price" id="detail-product-price">$29.99</div>
+                    <div class="product-description">
+                        <p id="detail-product-description">Product description goes here...</p>
+                    </div>
+                    <div class="product-age-group">
+                        <strong>Age Range:</strong> <span id="age-range">3-5 years</span>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" id="product-quantity">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="btn btn-primary" id="add-to-cart-btn">Add to Cart</button>
+                        <button class="btn btn-outline" id="wishlist-btn">Add to Wishlist</button>
+                    </div>
+                    <div class="product-shipping">
+                        <div class="shipping-info">
+                            <img src="assets/truck-icon.svg" alt="Shipping">
+                            <span>Free shipping on orders over $50</span>
+                        </div>
+                        <div class="returns-info">
+                            <img src="assets/return-icon.svg" alt="Returns">
+                            <span>30-day easy returns</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="description">Description</button>
+                    <button class="tab-btn" data-tab="details">Details</button>
+                    <button class="tab-btn" data-tab="reviews">Reviews</button>
+                </div>
+                <div class="tabs-content">
+                    <div class="tab-pane active" id="description-tab">
+                        <h3>About this item</h3>
+                        <p id="full-description">Full description goes here...</p>
+                    </div>
+                    <div class="tab-pane" id="details-tab">
+                        <h3>Product Details</h3>
+                        <ul id="details-list">
+                            <!-- Details will be loaded via JavaScript -->
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="reviews-tab">
+                        <h3>Customer Reviews</h3>
+                        <div class="reviews-container">
+                            <!-- Reviews will be loaded via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="related-products">
+                <h2>You May Also Like</h2>
+                <div class="products-grid">
+                    <!-- Related products will be loaded via JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Wonder Finds</h3>
+                    <p>Bringing joy and quality toys to children everywhere.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Email: info@wonderfinds.com</p>
+                    <p>Phone: (011) 433-6950</p>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Malikantsi 2025 Wonder Finds. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/product-detail.js"></script>
+</body>
+
+</html>

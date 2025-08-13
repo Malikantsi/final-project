@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Malikantsi Lekhoana">
-    <meta property="og:title" content="Wonder Finds Toy Store  ">
-    <meta property="og:description"
-        content="A home page that displays some of our products on the spotlight and a little bit about our store.">
+    <meta property="og:title" content="Wonder finds Toy Store  ">
+    <meta property="og:description" content="A page where you can find all the things added to your cart.">
     <meta property="og:image"
         content="https://github.com/Malikantsi/final-project/blob/main/public/images/hero-04.webp">
     <!-- update later-->
@@ -47,6 +46,7 @@
 
             <!-- Login & Cart -->
             <div class="right-section">
+                <a href="#"><i class="fas fa-user"></i> Login</a>
                 <a href="/src/cart/index.html"><i class="fas fa-shopping-bag"></i> Cart</a>
             </div>
         </div>
@@ -54,117 +54,64 @@
         <!-- Navigation Menu -->
         <nav class="nav-menu">
             <ul>
-
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/index.html">Home</a></li>
                 <li><a href="/src/products/products.html">Shop</a></li>
                 <li><a href="products.html?category=Halloween">Halloween</a></li>
                 <li><a href="products.html?category=gifts">Gifts & Toys</a></li>
                 <li><a href="products.html?category=special">Sales & Specials</a></li>
                 <li><a href="products.html?category=Party Rental">Party Rental</a></li>
-                <li><a href="/src/aboutUs/about-us.html">About</a></li>
+                <li><a href="#about">About</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-slideshow">
-                    <div class="hero-slide active">
-                        <img src="/images/hero-01.webp" alt="Hero Image 1">
-                        <div class="hero-text">
-                            <h1>Welcome to Our Site</h1>
-                            <p>Check out some of our most loved toys
-                            </p>
-                            <a href="products.html" class="btn btn-primary">Shop Now</a>
 
-                        </div>
+    <main class="cart-page">
+        <div class="container">
+            <h1>Your Shopping Cart</h1>
+
+            <div class="cart-grid">
+                <div class="cart-items">
+                    <div class="cart-header">
+                        <div class="header-product">Product</div>
+                        <div class="header-price">Price</div>
+                        <div class="header-quantity">Quantity</div>
+                        <div class="header-total">Total</div>
+                        <div class="header-actions"></div>
                     </div>
 
-                    <div class="hero-slide">
-                        <img src="/images/hero-02.jpg" alt="Hero Image 2">
-                        <div class="hero-text">
-                            <h1>Discover More</h1>
-                            <p>Second hero image caption</p>
-                            <a href="products.html" class="btn btn-primary">Shop Now</a>
-
-                        </div>
-                    </div>
-                    <div class="hero-slide">
-                        <img src="/images/hero-04.jpg" alt="Hero Image 3">
-                        <div class="hero-text">
-                            <h1>Join Us Today</h1>
-                            <p>Third hero image caption</p>
-                            <a href="products.html" class="btn btn-primary">Shop Now</a>
-
-                        </div>
+                    <div class="cart-items-list">
+                        <!-- Cart items will be loaded here -->
                     </div>
 
-                    <!-- Navigation dots -->
-                    <div class="slide-nav">
-                        <span class="nav-dot active" data-slide="0"></span>
-                        <span class="nav-dot" data-slide="1"></span>
-                        <span class="nav-dot" data-slide="2"></span>
+                    <div class="cart-actions">
+                        <button class="btn btn-outline" id="continue-shopping">Continue Shopping</button>
+                        <button class="btn btn-secondary" id="clear-cart">Clear Cart</button>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <section class="features">
-            <h2>Popular Themes</h2>
-            <div class="container grid-3">
-
-
-                <div class="card">
-                    <h3>Educational Toys</h3>
-                    <img src="/images/educational.webp" alt="">
-                    <p>Play and learn with our collection of brain-boosting toys.</p>
-                    <a href="products.html?category=educational" class="btn btn-outline">Explore</a>
-
-                </div>
-                <div class="card">
-                    <h3>Soft & Cuddly</h3>
-                    <img src="/images/stuffed-toy.webp" alt="">
-                    <p>Discover our plush toy collection perfect for hugs and snuggles.</p>
-                    <a href="products.html?category=plush" class="btn btn-outline">Explore</a>
-
-                </div>
-                <div class="card">
-                    <h3>Outdoor Fun</h3>
-                    <img src="/images/outdoor.webp" alt="">
-                    <p>Get moving with toys for sunshine and playtime in the park.</p>
-                    <a href="products.html?category=outdoor" class="btn btn-outline">Explore</a>
+                <div class="cart-summary">
+                    <h2>Order Summary</h2>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="shipping">$5.99</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax</span>
+                        <span id="tax">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total">$0.00</span>
+                    </div>
+                    <a href="/src/checkout/index.html" class="btn btn-primary" id="checkout-btn">Proceed to Checkout</a>
                 </div>
             </div>
-        </section>
-        <section class="on-sale">
-            <div class="container">
-                <h3>Sale up to 50%</h3>
-                <p>Here's why our products are a game changer for our customers</p>
-                <a href="products.html?onsale=true" class="btn btn-secondary">View Sale Items</a>
-            </div>
-
-        </section>
-
-        <section class="featured-products">
-            <div class="container">
-                <h2>Featured Toys</h2>
-                <div class="products-grid">
-                    <!-- Products will be loaded via JavaScript dont forget -->
-                </div>
-            </div>
-        </section>
-
-        <section class="testimonials">
-            <div class="container">
-                <h2>What Parents Say</h2>
-                <div class="testimonial-slider">
-                    <!-- Testimonials will be loaded via JavaScript -->
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
-
-
 
     <footer class="main-footer">
         <div class="container">
@@ -182,9 +129,9 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="/src/products/products.html">Shop</a></li>
-                        <li><a href="/src/aboutUs/about-us.html">About Us</a></li>
-                        <li><a href="/src/aboutUs/about-us.html">Contact</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -205,6 +152,7 @@
             </div>
         </div>
     </footer>
+
 
 </body>
 

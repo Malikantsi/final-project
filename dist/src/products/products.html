@@ -7,7 +7,7 @@
     <meta name="author" content="Malikantsi Lekhoana">
     <meta property="og:title" content="Wonder Finds Toy Store  ">
     <meta property="og:description"
-        content="A home page that displays some of our products on the spotlight and a little bit about our store.">
+        content="A page that displays all our products and multiple filters can be applied.">
     <meta property="og:image"
         content="https://github.com/Malikantsi/final-project/blob/main/public/images/hero-04.webp">
     <!-- update later-->
@@ -20,7 +20,7 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script type="module" crossorigin src="/assets/base-ZqPVw1iO.js"></script>
-  <script type="module" crossorigin src="/assets/main-FiAHJhhD.js"></script>
+  <script type="module" crossorigin src="/assets/product-DwlLAgfF.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/base-BDJQYDCT.css">
 </head>
 
@@ -40,22 +40,21 @@
             <!-- Search Bar -->
             <div class="search-section">
                 <input type="text" placeholder="Type to search..." />
-                <button id="search-btn">
-                    <a href="#"><i class="fas fa-search search-icon"></i></a>
-                </button>
             </div>
 
             <!-- Login & Cart -->
             <div class="right-section">
+                <a href="#"><i class="fas fa-user"></i> Login</a>
                 <a href="/src/cart/index.html"><i class="fas fa-shopping-bag"></i> Cart</a>
+                <span class="cart-count">0</span>
+
             </div>
         </div>
 
         <!-- Navigation Menu -->
         <nav class="nav-menu">
             <ul>
-
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/index.html">Home</a></li>
                 <li><a href="/src/products/products.html">Shop</a></li>
                 <li><a href="products.html?category=Halloween">Halloween</a></li>
                 <li><a href="products.html?category=gifts">Gifts & Toys</a></li>
@@ -65,106 +64,73 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-slideshow">
-                    <div class="hero-slide active">
-                        <img src="/images/hero-01.webp" alt="Hero Image 1">
-                        <div class="hero-text">
-                            <h1>Welcome to Our Site</h1>
-                            <p>Check out some of our most loved toys
-                            </p>
-                            <a href="products.html" class="btn btn-primary">Shop Now</a>
 
-                        </div>
-                    </div>
-
-                    <div class="hero-slide">
-                        <img src="/images/hero-02.jpg" alt="Hero Image 2">
-                        <div class="hero-text">
-                            <h1>Discover More</h1>
-                            <p>Second hero image caption</p>
-                            <a href="products.html" class="btn btn-primary">Shop Now</a>
-
-                        </div>
-                    </div>
-                    <div class="hero-slide">
-                        <img src="/images/hero-04.jpg" alt="Hero Image 3">
-                        <div class="hero-text">
-                            <h1>Join Us Today</h1>
-                            <p>Third hero image caption</p>
-                            <a href="products.html" class="btn btn-primary">Shop Now</a>
-
-                        </div>
-                    </div>
-
-                    <!-- Navigation dots -->
-                    <div class="slide-nav">
-                        <span class="nav-dot active" data-slide="0"></span>
-                        <span class="nav-dot" data-slide="1"></span>
-                        <span class="nav-dot" data-slide="2"></span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="features">
-            <h2>Popular Themes</h2>
-            <div class="container grid-3">
-
-
-                <div class="card">
-                    <h3>Educational Toys</h3>
-                    <img src="/images/educational.webp" alt="">
-                    <p>Play and learn with our collection of brain-boosting toys.</p>
-                    <a href="products.html?category=educational" class="btn btn-outline">Explore</a>
-
-                </div>
-                <div class="card">
-                    <h3>Soft & Cuddly</h3>
-                    <img src="/images/stuffed-toy.webp" alt="">
-                    <p>Discover our plush toy collection perfect for hugs and snuggles.</p>
-                    <a href="products.html?category=plush" class="btn btn-outline">Explore</a>
-
-                </div>
-                <div class="card">
-                    <h3>Outdoor Fun</h3>
-                    <img src="/images/outdoor.webp" alt="">
-                    <p>Get moving with toys for sunshine and playtime in the park.</p>
-                    <a href="products.html?category=outdoor" class="btn btn-outline">Explore</a>
-                </div>
-            </div>
-        </section>
-        <section class="on-sale">
+    <main class="products-page">
+        <section class="products-hero">
             <div class="container">
-                <h3>Sale up to 50%</h3>
-                <p>Here's why our products are a game changer for our customers</p>
-                <a href="products.html?onsale=true" class="btn btn-secondary">View Sale Items</a>
+                <h1>Our Toy Collection</h1>
+                <p>Find the perfect toy for every age and interest</p>
             </div>
-
         </section>
 
-        <section class="featured-products">
+        <section class="products-filter">
             <div class="container">
-                <h2>Featured Toys</h2>
+                <div class="filter-grid">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search toys..." id="search-input">
+                        <button id="search-btn">
+                            <a href="#"><i class="fas fa-search"></i></a>
+                        </button>
+                    </div>
+                    <div class="filter-options">
+                        <select id="category-filter">
+                            <option value="">All Categories</option>
+                            <option value="educational">Educational</option>
+                            <option value="plush">Soft & Cuddly</option>
+                            <option value="outdoor">Outdoor Fun</option>
+                            <option value="building">Building Sets</option>
+                            <option value="arts">Arts & Crafts</option>
+                        </select>
+                        <select id="price-filter">
+                            <option value="">Price Range</option>
+                            <option value="0-20">Under $20</option>
+                            <option value="20-50">$20 - $50</option>
+                            <option value="50-100">$50 - $100</option>
+                            <option value="100-">Over $100</option>
+                        </select>
+                        <select id="age-filter">
+                            <option value="">Age Group</option>
+                            <option value="0-1">0-1 years</option>
+                            <option value="1-3">1-3 years</option>
+                            <option value="3-5">3-5 years</option>
+                            <option value="5-8">5-8 years</option>
+                            <option value="8-12">8-12 years</option>
+                        </select>
+                        <select id="sort-by">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Customer Rating</option>
+                            <option value="newest">Newest Arrivals</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-list">
+            <div class="container">
                 <div class="products-grid">
-                    <!-- Products will be loaded via JavaScript dont forget -->
+                    <!-- Products will be loaded via JavaScript -->
                 </div>
-            </div>
-        </section>
-
-        <section class="testimonials">
-            <div class="container">
-                <h2>What Parents Say</h2>
-                <div class="testimonial-slider">
-                    <!-- Testimonials will be loaded via JavaScript -->
+                <div class="pagination">
+                    <button id="prev-page" disabled>Previous</button>
+                    <span id="page-info">Page 1 of 5</span>
+                    <button id="next-page">Next</button>
                 </div>
             </div>
         </section>
     </main>
-
-
 
     <footer class="main-footer">
         <div class="container">
@@ -205,6 +171,7 @@
             </div>
         </div>
     </footer>
+
 
 </body>
 
