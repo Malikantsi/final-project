@@ -1,3 +1,4 @@
+import { } from './productDetail.mjs'
 // Products Page Functionality
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize variables

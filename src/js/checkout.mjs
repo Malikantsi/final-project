@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
     emailjs.init("7gQY1_XsMluQ8vvzh");
 })();
 
-function sendOrderEmail(customerName, customerEmail, orderTotal) {
+export function sendOrderEmail(customerName, customerEmail, orderTotal) {
     emailjs.send("service_frq3chr", "template_4535lub", {
         customer_name: customerName,
         customer_email: customerEmail,

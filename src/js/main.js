@@ -1,3 +1,5 @@
+import { updateCartCount } from './utils.mjs';
+
 
 
 // hero-container 
@@ -62,14 +64,10 @@ mobileMenuBtn.addEventListener('click', () => {
     mainNav.classList.toggle('active');
 });
 
-// Cart Count Update (will be enhanced later)
-function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
-}
+
 
 // Initialize cart count
-updateCartCount();
+updateCartCount(cartCount);
 
 // Utility Functions
 function formatPrice(price) {
@@ -96,7 +94,9 @@ async function fetchData(url) {
 // Load Featured Products on Homepage
 if (document.querySelector('.products-grid')) {
     async function loadFeaturedProducts() {
-        const products = await fetchData('https://dummyjson.com/products?limit=6');
+        const products = await fetchData('https://api.bluecartapi.com/request?api_key=7F5D6834A13048A282098FCBE16A9998&type=search&search_term=toys&sort_by=best_seller&size=5');
+        console.log(products);
+        return;
         if (products && products.products) {
             renderProducts(products.products, '.products-grid');
         }
