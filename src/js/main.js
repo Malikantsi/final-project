@@ -69,13 +69,7 @@ mobileMenuBtn.addEventListener('click', () => {
 // Initialize cart count
 updateCartCount(cartCount);
 
-// Utility Functions
-function formatPrice(price) {
-    return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD'
-    }).format(price);
-}
+
 
 // Fetch API Helper
 async function fetchData(url) {
@@ -94,7 +88,7 @@ async function fetchData(url) {
 // Load Featured Products on Homepage
 if (document.querySelector('.products-grid')) {
     async function loadFeaturedProducts() {
-        const products = await fetchData('https://api.bluecartapi.com/request?api_key=7F5D6834A13048A282098FCBE16A9998&type=search&search_term=toys&sort_by=best_seller&size=5');
+        const products = await fetchData('https://scout-amazon-data.p.rapidapi.com/search?keyword=toys');
         console.log(products);
         return;
         if (products && products.products) {

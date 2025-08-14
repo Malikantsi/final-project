@@ -1,4 +1,4 @@
-import { } from './productDetail.mjs'
+import { formatPrice, setLocalStorage, getLocalStorage } from './utils.mjs';
 // Products Page Functionality
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize variables
@@ -7,25 +7,20 @@ document.addEventListener('DOMContentLoaded', function () {
     let allProducts = [];
     let filteredProducts = [];
 
+
+
     // DOM Elements
     const productsGrid = document.querySelector('.products-grid');
-    const prevPageBtn = document.getElementById('prev-page');
-    const nextPageBtn = document.getElementById('next-page');
-    const pageInfo = document.getElementById('page-info');
-    const searchInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-btn');
-    const categoryFilter = document.getElementById('category-filter');
-    const priceFilter = document.getElementById('price-filter');
-    const ageFilter = document.getElementById('age-filter');
-    const sortBy = document.getElementById('sort-by');
+    const prevPageBtn = document.querySelector('#prev-page');
+    const nextPageBtn = document.querySelector('#next-page');
+    const pageInfo = document.querySelector('#page-info');
+    const searchInput = document.querySelector('#search-input');
+    const searchBtn = document.querySelector('#search-btn');
+    const categoryFilter = document.querySelector('#category-filter');
+    const priceFilter = document.querySelector('#price-filter');
 
-    // Utility function to format price
-    function formatPrice(price) {
-        return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD'
-        }).format(price);
-    }
+    const sortBy = document.querySelector('#sort-by');
+
 
     // Update cart count in header
     function updateCartCount() {
@@ -56,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             // Try to fetch from API
             let products = await fetchToys();
-
             // If empty, use fallback
             if (!products || products.length === 0) {
                 products = getFallbackToys();
@@ -79,19 +73,55 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Fetch from Walmart affiliate API (demo mode)
     async function fetchToys() {
-        const response = await fetch(`https://api.bluecartapi.com/request?api_key=7F5D6834A13048A282098FCBE16A9998&type=search&search_term=toys&sort_by=best_seller&size=12`);
+        var productarray;
+        const response = await fetch("https://scout-amazon-data.p.rapidapi.com/Amazon-Search-Data?query=toys&region=US&sort_by=RELEVANCE&page=1", {
+            method: "GET",
+            headers: {
+                "X-RapidAPI-Key": "e60a9d86cemsh8b4e1f6d4cef00fp165b60jsneed46343db87",
+                "X-RapidAPI-Host": "scout-amazon-data.p.rapidapi.com"//x-rapidapi-host: 
+            }
+        }).then(res => res.json())
+            .then(data => {
+                productarray = data;
+                if (data && data.data) {
+                    container.innerHTML = data.data.map(item => `
+                    <div >
+                        <img src="${item.image}" alt="${item.title}" style="width:100%; height:auto;" />
+                        <h4>True${item.title}</h4>
+                        <p>Price: ${item.price}</p>
+                    </div>`
+                    ).join("");
+                }
+            })
+            .catch(err => console.error(err));
+        return productarray.products;
 
-        const data = await response.json();
+    }
 
-        return data.search_results.map((item, index) => ({
-            id: item.product.item_id || index,
-            title: item.product.title,
-            price: item.offers.primary?.price || (Math.random() * 50 + 10).toFixed(2),
-            description: item.product.description || "Popular children's toy",
-            image: item.product.images?.[0] || `https://via.placeholder.com/300?text=Toy+${index + 1}`,
-            rating: Math.min(5, (Math.random() * 1.5 + 3.5)).toFixed(1), // 3.5-5 stars
-            category: ['educational', 'plush', 'outdoor', 'arts'][index % 4]
-        }));
+    async function initialize() {
+        // Try to load from cache first
+        const cachedProducts = localStorage.getItem('cachedProducts');
+        if (cachedProducts) {
+            allProducts = JSON.parse(cachedProducts);
+            filteredProducts = [...allProducts];
+            renderProducts();
+        }
+
+        // Fetch fresh data
+        const products = await fetchToys();
+        console.log(products.length);
+
+        if (products.length > 0) {
+            allProducts = products;
+            filteredProducts = [...products];
+            localStorage.setItem('cachedProducts', JSON.stringify(products));
+        } else {
+            allProducts = getFallbackToys();
+            filteredProducts = [...allProducts];
+            showAlert("⚠️ Using demo data - API may be unavailable");
+        }
+        renderProducts();
+        updateCartCount();
     }
 
 
@@ -169,17 +199,17 @@ document.addEventListener('DOMContentLoaded', function () {
         productsGrid.innerHTML = productsToDisplay.map(product => `
             <div class="product-card">
                 <div class="product-image">
-                    <img src="${product.image}" alt="${product.title}" onerror="this.src='images/placeholder-toy.jpg'">
-                    <a href="/src/products/product-details.html" class="quick-view" data-id="${product.id}">Quick View</a>
+                    <img src="${product.product_image}" alt="${product.product_title}" onerror="this.src='images/placeholder-toy.jpg'">
+                    <a href="/src/products/product-details.html" class="quick-view" data-id="${product.asin}">Quick View</a>
                 </div>
                 <div class="product-info">
-                    <h3>${product.title}</h3>
-                    <div class="product-price">${formatPrice(product.price)}</div>
+                    <h3>${product.product_title}</h3>
+                    <div class="product-price">${formatPrice(product.product_price.replace("$", ""))}</div>
                     <div class="product-rating">
-                        ${'★'.repeat(Math.round(product.rating.rate))}${'☆'.repeat(5 - Math.round(product.rating.rate))} 
-                        <span class="review-count">(${product.rating.count})</span>
+                        ${'★'.repeat(Math.round(product.product_star_rating))}${'☆'.repeat(5 - Math.round(product.product_star_rating))} 
+                        <span class="review-count">(${product.product_num_ratings})</span>
                     </div>
-                    <button class="btn btn-primary add-to-cart" data-id="${product.id}">
+                    <button class="btn btn-primary add-to-cart" data-id="${product.asin}" id="${product.asin}" name="${product.asin}">
                         Add to Cart
                     </button>
                 </div>
@@ -204,58 +234,68 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Filter products based on selected filters
     function filterProducts() {
+
         const searchTerm = searchInput.value.toLowerCase();
         const category = categoryFilter.value;
         const priceRange = priceFilter.value;
-        const ageGroup = ageFilter.value;
         const sortOption = sortBy.value;
 
         filteredProducts = allProducts.filter(product => {
+            var ProductPrice = product.product_price.substring(1, product.product_price.length);
             // Search filter
-            const matchesSearch = product.title.toLowerCase().includes(searchTerm) ||
-                product.description.toLowerCase().includes(searchTerm);
+            const matchesSearch = product.product_title.toLowerCase().includes(searchTerm) ||
+                product.product_title.toLowerCase().includes(searchTerm);
 
             // Category filter
             const matchesCategory = !category || product.category === category;
 
             // Price filter
             let matchesPrice = true;
+
             if (priceRange) {
                 const [min, max] = priceRange.split('-').map(Number);
                 if (max) {
-                    matchesPrice = product.price >= min && product.price <= max;
+                    matchesPrice = ProductPrice >= min && ProductPrice <= max;
+
                 } else {
-                    matchesPrice = product.price >= min;
+                    matchesPrice = ProductPrice >= min;
                 }
             }
 
-            // Age group filter
-            const matchesAge = !ageGroup || product.ageGroup === ageGroup;
 
-            return matchesSearch && matchesCategory && matchesPrice && matchesAge;
+            return matchesSearch && matchesCategory && matchesPrice;
         });
 
         // Sort products
         switch (sortOption) {
             case 'price-low':
-                filteredProducts.sort((a, b) => a.price - b.price);
+                filteredProducts.sort((a, b) => {
+                    const priceA = parseFloat(a.product_price.replace('$', '')) || 0;
+                    const priceB = parseFloat(b.product_price.replace('$', '')) || 0;
+                    return priceA - priceB;
+                });
                 break;
             case 'price-high':
-                filteredProducts.sort((a, b) => b.price - a.price);
+                filteredProducts.sort((a, b) => {
+                    const priceA = parseFloat(a.product_price.replace('$', '')) || 0;
+                    const priceB = parseFloat(b.product_price.replace('$', '')) || 0;
+                    return priceA - priceB;
+                });
                 break;
             case 'rating':
-                filteredProducts.sort((a, b) => b.rating.rate - a.rating.rate);
+                filteredProducts.sort((a, b) => b.product_num_ratings - a.product_num_ratings);
                 break;
             case 'newest':
-                filteredProducts.sort((a, b) => b.id - a.id);
+                filteredProducts.sort((a, b) => b.asin - a.asin);
                 break;
             default:
                 // Featured (default sorting)
-                filteredProducts.sort((a, b) => b.rating.rate * b.rating.count - a.rating.rate * a.rating.count);
+                filteredProducts.sort((a, b) => b.product_star_rating * b.product_num_ratings - a.product_star_rating * a.product_num_ratings);
                 break;
         }
 
         currentPage = 1;
+
         renderProducts();
     }
 
@@ -267,30 +307,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add to cart functionality
     function addToCart(e) {
-        const productId = parseInt(e.target.dataset.id);
-        const product = allProducts.find(p => p.id === productId);
+        console.log(e);
+        const productId = parseInt(e);
 
-        if (!product) return;
+        const product = allProducts.find(p =>
+            p.asin === productId);
+        console.log(product);
 
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Check if product already in cart
-        const existingItem = cart.find(item => item.id === productId);
-
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cart.push({
-                id: product.id,
-                title: product.title,
-                price: product.price,
-                image: product.image,
-                quantity: 1
-            });
+        try {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        } catch (error) {
+            console.log(error);
         }
 
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
+
 
         // Show feedback
         const btn = e.target;
@@ -301,6 +332,7 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.textContent = originalText;
             btn.classList.remove('added');
         }, 2000);
+
     }
 
     // Pagination handlers
@@ -327,35 +359,11 @@ document.addEventListener('DOMContentLoaded', function () {
     searchBtn.addEventListener('click', filterProducts);
     categoryFilter.addEventListener('change', filterProducts);
     priceFilter.addEventListener('change', filterProducts);
-    ageFilter.addEventListener('change', filterProducts);
+    // ageFilter.addEventListener('change', filterProducts);
     sortBy.addEventListener('change', filterProducts);
 
     // Initialize the page
-    async function initialize() {
-        // Try to load from cache first
-        const cachedProducts = localStorage.getItem('cachedProducts');
-        if (cachedProducts) {
-            allProducts = JSON.parse(cachedProducts);
-            filteredProducts = [...allProducts];
-            renderProducts();
-        }
 
-        // Fetch fresh data
-        const products = await fetchToys();
-
-        if (products.length > 0) {
-            allProducts = products;
-            filteredProducts = [...products];
-            localStorage.setItem('cachedProducts', JSON.stringify(products));
-        } else {
-            allProducts = getFallbackToys();
-            filteredProducts = [...allProducts];
-            showAlert("⚠️ Using demo data - API may be unavailable");
-        }
-
-        renderProducts();
-        updateCartCount();
-    }
 
     initialize();
 });
