@@ -143,3 +143,36 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize
     initialize();
 });
+
+
+// Initialize EmailJS
+(function () {
+    emailjs.init("7gQY1_XsMluQ8vvzh");
+})();
+
+function sendOrderEmail(customerName, customerEmail, orderTotal) {
+    emailjs.send("service_frq3chr", "template_4535lub", {
+        customer_name: customerName,
+        customer_email: customerEmail,
+        order_total: orderTotal
+    })
+        .then(() => {
+            console.log("Order confirmation email sent!");
+        })
+        .catch((error) => {
+            console.error("Email send error:", error);
+        });
+}
+
+// Example: Handle checkout form submission
+// document.querySelector("#checkout-form").addEventListener("submit", function (e) {
+//     e.preventDefault();
+
+//     const customerName = document.querySelector("#name").value;
+//     const customerEmail = document.querySelector("#email").value;
+//     const orderTotal = "R500.00"; // Replace with real cart total from your app
+
+//     sendOrderEmail(customerName, customerEmail, orderTotal);
+
+//     alert("Thank you for your purchase! Confirmation email sent.");
+// });

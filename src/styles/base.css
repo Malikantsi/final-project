@@ -103,46 +103,78 @@ header {
 
 .social-icons a {
     color: var(--white);
-    font-size: 1.25rem;
-    margin-right: 0.625rem;
-    text-decoration: none;
+    font-size: 18px;
+    margin-right: 6px;
+    transition: color 0.2s ease;
 }
 
 .social-icons a:hover {
     color: var(--accent);
 }
 
-.search-section {
-    flex: 1;
-    max-width: 400px;
-    padding: 0.625rem;
-}
 
-.search-icon {
+
+.search-section {
+    display: flex;
+    align-items: center;
+    max-width: 500px;
+    padding: 5px;
+    gap: 5px;
     flex: 1;
-    font-size: 20px;
-    cursor: pointer;
-    background: white;
-    padding: 8px;
-    border-radius: 50%;
+    margin: 10px 0;
 }
 
 .search-section input {
-    width: 100%;
-    padding: 0.625rem;
+    flex: 1;
+    padding: 8px 10px;
+    font-size: 16px;
     border: 1px solid var(--gray-light);
     border-radius: var(--border-radius);
 }
 
-.right-section a {
-    color: var(--white);
-    text-decoration: none;
-    margin-left: 1.25rem;
-    font-size: 0.875rem;
+.search-section button {
+    background-color: var(--text);
+    border: none;
+    color: var(--text);
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    border: 1px solid var(--gray-light);
+    border-radius: var(--border-radius);
 }
 
-.right-section a i {
-    margin-right: 0.3125rem;
+.search-section button:hover {
+    background-color: var(--text-light);
+}
+
+.search-section .search-icon {
+    color: var(--white);
+    font-size: 18px;
+}
+
+.mobile-menu-btn {
+    display: none;
+}
+
+
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.right-section a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .top-bar {
@@ -161,6 +193,7 @@ header {
 
 .logo {
     height: 3.75rem;
+    width: auto;
 }
 
 .nav-menu {
@@ -186,6 +219,37 @@ header {
 
 .nav-menu ul li a:hover {
     color: var(--primary);
+}
+
+
+
+.cart-count {
+    position: absolute;
+    top: -6px;
+    /* move above the icon */
+    right: -10px;
+    /* move slightly right */
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+
+.cart-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 500;
+}
+
+.cart-link i {
+    font-size: 24px;
 }
 
 .hero {
@@ -577,21 +641,7 @@ header {
     cursor: not-allowed;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .filter-grid {
-        grid-template-columns: 1fr;
-    }
 
-    .filter-options {
-        flex-wrap: wrap;
-        justify-content: flex-start;
-    }
-
-    .filter-options select {
-        flex: 1 1 150px;
-    }
-}
 
 /* product details-------------------------------------- */
 /* Product Detail Page Styles */
@@ -867,31 +917,7 @@ header {
     font-size: 1.8rem;
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-    .product-detail-grid {
-        grid-template-columns: 1fr;
-    }
 
-    .main-image {
-        height: 300px;
-    }
-}
-
-@media (max-width: 576px) {
-    .product-actions {
-        flex-direction: column;
-    }
-
-    .quantity-selector {
-        justify-content: center;
-    }
-
-    .tabs-header {
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-}
 
 
 
@@ -1019,39 +1045,6 @@ header {
 .empty-cart p {
     margin-bottom: 1.5rem;
 }
-
-@media (max-width: 768px) {
-    .cart-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .cart-header {
-        display: none;
-    }
-
-    .cart-item {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        position: relative;
-        padding: 1rem 0;
-    }
-
-    .cart-item-details {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .cart-item-image {
-        margin-bottom: 1rem;
-    }
-
-    .remove-item {
-        position: absolute;
-        top: 1rem;
-        right: 0;
-    }
-}
-
 
 
 /* Checkout Page Styles */
@@ -1189,16 +1182,7 @@ header {
     font-size: 1.1rem;
 }
 
-@media (max-width: 768px) {
-    .checkout-grid {
-        grid-template-columns: 1fr;
-    }
 
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-}
 
 /* Confirmation Page Styles */
 .confirmation-page {
@@ -1267,19 +1251,7 @@ header {
     gap: 1rem;
 }
 
-@media (max-width: 576px) {
-    .confirmation-card {
-        padding: 2rem 1.5rem;
-    }
 
-    .confirmation-actions {
-        flex-direction: column;
-    }
-
-    .confirmation-actions .btn {
-        width: 100%;
-    }
-}
 
 /* About Page Styles */
 .about-page {
@@ -1287,11 +1259,11 @@ header {
 }
 
 .about-hero {
-    background-color: var(--primary);
+    background-color: var(--secondary);
     color: var(--white);
     padding: 4rem 0;
     text-align: center;
-    background-image: url('../images/about-hero-bg.jpg');
+    background-image: url('/public/images/hero-05.webp');
     background-size: cover;
     background-position: center;
     background-blend-mode: multiply;
@@ -1446,36 +1418,6 @@ header {
     font-size: 1.1rem;
 }
 
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.social-links img {
-    width: 100px;
-    height: 100px;
-    transition: transform 0.3s ease;
-}
-
-.social-links img:hover {
-    transform: scale(1.1);
-}
-
-@media (max-width: 768px) {
-    .mission-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact {
-        order: -1;
-    }
-
-    .about-hero h1 {
-        font-size: 2.2rem;
-    }
-}
-
 /* -----------------------------footer----------------------- */
 
 .main-footer {
@@ -1548,29 +1490,4 @@ header {
     text-align: center;
     padding-top: 1rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .main-nav {
-        display: none;
-    }
-
-    .mobile-menu-btn {
-        display: block;
-    }
-
-    .header-actions {
-        gap: 0.5rem;
-    }
-}
-
-@media (min-width: 768px) {
-    .grid-3 {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .hero h1 {
-        font-size: 3.2rem;
-    }
 }
