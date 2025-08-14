@@ -18,8 +18,9 @@
         rel="stylesheet" />
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <script type="module" crossorigin src="/assets/base-DDXWwQWU.js"></script>
-  <script type="module" crossorigin src="/assets/main-FiAHJhhD.js"></script>
+  <script type="module" crossorigin src="/assets/main-Dl-uu_ZN.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/base-DDXWwQWU.js">
+  <link rel="modulepreload" crossorigin href="/assets/utils-CQGMlDFX.js">
   <link rel="stylesheet" crossorigin href="/assets/base-BA521n2v.css">
   <link rel="stylesheet" crossorigin href="/assets/main-mBA1rTfV.css">
 </head>
@@ -55,7 +56,6 @@
 
         <nav class="nav-menu">
             <ul>
-
                 <li><a href="index.html">Home</a></li>
                 <li><a href="/src/products/products.html">Shop</a></li>
                 <li><a href="products.html?category=Halloween">Halloween</a></li>
@@ -79,7 +79,7 @@
                             <h1>Welcome to Our Site</h1>
                             <p>Check out some of our most loved toys
                             </p>
-                            <a href="products.html" class="btn btn-primary">Shop Now</a>
+                            <a href="/src/products/products.html" class="btn btn-primary">Shop Now</a>
 
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                         <div class="hero-text">
                             <h1>Join Us Today</h1>
                             <p>Join our wonder family</p>
-                            <a href="/src/aboutUs/about-us.html" class="btn btn-primary">Shop Now</a>
+                            <a href="/src/aboutUs/about-us.html" class="btn btn-primary">Join</a>
 
                         </div>
                     </div>
@@ -143,7 +143,7 @@
             <div class="container">
                 <h3>Sale up to 50%</h3>
                 <p>Here's why our products are a game changer for our customers</p>
-                <a href="products.html?onsale=true" class="btn btn-secondary">View Sale Items</a>
+                <a href="/src/products/products.html" class="btn btn-secondary">View Sale Items</a>
             </div>
 
         </section>
@@ -152,7 +152,7 @@
             <div class="container">
                 <h2>Featured Toys</h2>
                 <div class="products-grid">
-                    <!-- Products will be loaded via JavaScript dont forget -->
+                    <!-- Products will be loaded DYNAMICALLY -->
                 </div>
             </div>
         </section>
