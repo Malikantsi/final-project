@@ -10,18 +10,18 @@
         content="A home page that displays some of our products on the spotlight and a little bit about our store.">
     <meta property="og:image"
         content="https://github.com/Malikantsi/final-project/blob/main/public/images/hero-04.webp">
-    <!-- update later-->
-    <meta property="og:url" content="https://malikantsi.github.io/wdd231/final/index.html"> <!-- update later-->
+    <meta property="og:url" content="https://wonderfinds.netlify.app/">
     <title>Wonder Finds Toy Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap"
         rel="stylesheet" />
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <script type="module" crossorigin src="/assets/base-ZqPVw1iO.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script type="module" crossorigin src="/assets/base-DDXWwQWU.js"></script>
   <script type="module" crossorigin src="/assets/main-FiAHJhhD.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/base-BDJQYDCT.css">
+  <link rel="stylesheet" crossorigin href="/assets/base-BA521n2v.css">
+  <link rel="stylesheet" crossorigin href="/assets/main-mBA1rTfV.css">
 </head>
 
 <body>
@@ -41,17 +41,18 @@
             <div class="search-section">
                 <input type="text" placeholder="Type to search..." />
                 <button id="search-btn">
-                    <a href="#"><i class="fas fa-search search-icon"></i></a>
+                    <a href="/src/products/products.html"><i class="fas fa-search search-icon"></i></a>
                 </button>
             </div>
 
-            <!-- Login & Cart -->
             <div class="right-section">
-                <a href="/src/cart/index.html"><i class="fas fa-shopping-bag"></i> Cart</a>
+                <a href="/src/cart/index.html" class="cart-link">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
             </div>
         </div>
 
-        <!-- Navigation Menu -->
         <nav class="nav-menu">
             <ul>
 
@@ -64,6 +65,9 @@
                 <li><a href="/src/aboutUs/about-us.html">About</a></li>
             </ul>
         </nav>
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </header>
     <main>
         <section class="hero">
@@ -84,8 +88,7 @@
                         <img src="/images/hero-02.jpg" alt="Hero Image 2">
                         <div class="hero-text">
                             <h1>Discover More</h1>
-                            <p>Second hero image caption</p>
-                            <a href="products.html" class="btn btn-primary">Shop Now</a>
+                            <a href="/src/products/products.html" class="btn btn-primary">Shop Now</a>
 
                         </div>
                     </div>
@@ -93,8 +96,8 @@
                         <img src="/images/hero-04.jpg" alt="Hero Image 3">
                         <div class="hero-text">
                             <h1>Join Us Today</h1>
-                            <p>Third hero image caption</p>
-                            <a href="products.html" class="btn btn-primary">Shop Now</a>
+                            <p>Join our wonder family</p>
+                            <a href="/src/aboutUs/about-us.html" class="btn btn-primary">Shop Now</a>
 
                         </div>
                     </div>
