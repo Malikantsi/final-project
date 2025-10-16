@@ -25,27 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
     ];
 
-    // Initialize the page
-    function initialize() {
-        if (cart.length === 0) {
-            window.location.href = 'cart.html';
-            return;
-        }
 
-        populateStates();
-        renderOrderSummary();
-        setupFormValidation();
-    }
-
-    // Populate states dropdown
-    function populateStates() {
-        usStates.forEach(state => {
-            const option = document.createElement('option');
-            option.value = state;
-            option.textContent = state;
-            stateSelect.appendChild(option);
-        });
-    }
 
     // Render order summary
     function renderOrderSummary() {
@@ -141,9 +121,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Initialize
-    initialize();
-});
 
+});
 
 // Initialize EmailJS
 (function () {
@@ -155,24 +134,28 @@ export function sendOrderEmail(customerName, customerEmail, orderTotal) {
         customer_name: customerName,
         customer_email: customerEmail,
         order_total: orderTotal
-    })
-        .then(() => {
-            console.log("Order confirmation email sent!");
-        })
-        .catch((error) => {
-            console.error("Email send error:", error);
-        });
+    }).then(() => {
+        console.log("Order confirmation email sent!");
+    }).catch((error) => {
+        console.error("Email send error:", error);
+    });
 }
 
+var OrderSum = JSON.parse(localStorage.getItem('OrderSummary'));
+
+document.getElementById("order-subtotal").textContent = OrderSum[0];
+document.getElementById("order-shipping").textContent = OrderSum[1];
+document.getElementById("order-tax").textContent = OrderSum[2];
+document.getElementById("order-total").textContent = OrderSum[3];
 // Example: Handle checkout form submission
-// document.querySelector("#checkout-form").addEventListener("submit", function (e) {
-//     e.preventDefault();
+document.querySelector("#checkout-form").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-//     const customerName = document.querySelector("#name").value;
-//     const customerEmail = document.querySelector("#email").value;
-//     const orderTotal = "R500.00"; // Replace with real cart total from your app
+    const customerName = document.querySelector("#name").value;
+    const customerEmail = document.querySelector("#email").value;
+    const orderTotal = "R500.00"; // Replace with real cart total from your app
 
-//     sendOrderEmail(customerName, customerEmail, orderTotal);
+    sendOrderEmail(customerName, customerEmail, orderTotal);
 
-//     alert("Thank you for your purchase! Confirmation email sent.");
-// });
+    alert("Thank you for your purchase! Confirmation email sent.");
+});

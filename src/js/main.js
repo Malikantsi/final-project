@@ -89,8 +89,6 @@ async function fetchData(url) {
 if (document.querySelector('.products-grid')) {
     async function loadFeaturedProducts() {
         const products = await fetchData('https://scout-amazon-data.p.rapidapi.com/search?keyword=toys');
-        console.log(products);
-        return;
         if (products && products.products) {
             renderProducts(products.products, '.products-grid');
         }
@@ -119,15 +117,6 @@ if (document.querySelector('.products-grid')) {
         });
     }
 
-    function addToCart(e) {
-        const productId = e.target.dataset.id;
-        // This will be enhanced when we implement the cart functionality
-        alert(`Product ${productId} added to cart`);
-
-        // Update cart count
-        const currentCount = parseInt(cartCount.textContent);
-        cartCount.textContent = currentCount + 1;
-    }
 
     loadFeaturedProducts();
 }

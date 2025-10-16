@@ -1,4 +1,4 @@
-import { formatPrice, setLocalStorage, getLocalStorage } from './utils.mjs';
+import { formatPrice, setLocalStorage, getLocalStorage, updateCartCount } from './utils.mjs';
 // Products Page Functionality
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize variables
@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // Update cart count in header
-    function updateCartCount() {
+    /*function updateCartCount() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         const count = cart.reduce((total, item) => total + item.quantity, 0);
         document.querySelector('.cart-count').textContent = count;
-    }
+    }*/
 
     // Show alert message
     function showAlert(message) {
@@ -101,15 +101,19 @@ document.addEventListener('DOMContentLoaded', function () {
     async function initialize() {
         // Try to load from cache first
         const cachedProducts = localStorage.getItem('cachedProducts');
+        // console.log(getLocalStorage('cart'));
         if (cachedProducts) {
             allProducts = JSON.parse(cachedProducts);
             filteredProducts = [...allProducts];
+
             renderProducts();
+        } else {
+
         }
 
         // Fetch fresh data
         const products = await fetchToys();
-        console.log(products.length);
+
 
         if (products.length > 0) {
             allProducts = products;
@@ -307,22 +311,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add to cart functionality
     function addToCart(e) {
-        console.log(e);
-        const productId = parseInt(e);
+        var productId = e.target.id;
 
         const product = allProducts.find(p =>
             p.asin === productId);
-        console.log(product);
 
         try {
-            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log(product);
+            setLocalStorage('cart', product);
             updateCartCount();
+
         } catch (error) {
             console.log(error);
         }
-
-
-
         // Show feedback
         const btn = e.target;
         const originalText = btn.textContent;
@@ -332,6 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.textContent = originalText;
             btn.classList.remove('added');
         }, 2000);
+
 
     }
 
