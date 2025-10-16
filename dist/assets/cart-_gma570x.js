@@ -1,0 +1,7 @@
+import"./base-DDXWwQWU.js";import{g as u,f as e}from"./utils-Ds_x5a_2.js";const p=u("cart"),o={};p.forEach(n=>{const t=n.product_title;o[t]?(o[t].quantity++,o[t].total=o[t].quantity*o[t].product_price.replace("$",""),console.log(`Else: ${o[t].product_price}`)):(o[t]={...n,quantity:1,total:n.product_price.replace("$","")},console.log(`IF: ${n.product_price}`))});const m=Object.values(o);function g(n){const t=document.querySelector(".cart-items-list");t.innerHTML="";let c=0;n.forEach(r=>{c+=Number(r.total);const s=document.createElement("div");s.classList.add("cart-item"),s.innerHTML=`
+          <div>${r.product_title.substring(0,20)}</div>
+          <div>${r.product_price}</div>
+          <div>${r.quantity}</div>
+          <div>${r.total}</div>
+          <div><button class="remove-btn" data-title="${r.product_title}">✖</button></div>
+        `,t.appendChild(s)});const l=5.99,d=c*.1,i=c+l+d;console.log(c),document.getElementById("subtotal").textContent=`${e(c)}`,document.getElementById("shipping").textContent=`${e(l)}`,document.getElementById("tax").textContent=`${e(d)}`,document.getElementById("total").textContent=`${e(i)}`;const a=[];a.push(e(c)),a.push(e(l)),a.push(e(d)),a.push(e(i)),localStorage.setItem("OrderSummary",JSON.stringify(a))}document.getElementById("clear-cart").addEventListener("click",()=>{document.querySelector(".cart-items-list").innerHTML="",document.getElementById("subtotal").textContent=e("0.00"),document.getElementById("total").textContent=e("0.00")});g(m);

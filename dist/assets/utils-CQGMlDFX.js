@@ -1,1 +1,0 @@
-function a(t){const e=JSON.parse(localStorage.getItem("cart"))||[];t.textContent=e.reduce((r,n)=>r+n.quantity,0)}function c(t){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(t)}export{c as f,a as u};
