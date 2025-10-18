@@ -75,7 +75,7 @@
 
             <div class="checkout-grid">
                 <div class="checkout-form">
-                    <form id="payment-form">
+                    <form id="payment-form" name="payment-form">
                         <h2>Shipping Information</h2>
                         <div class="form-group">
                             <label for="full-name">Full Name</label>
@@ -112,38 +112,12 @@
                             </div>
                         </div>
 
-                        <!-- <h2>Payment Information</h2>
-
-                        <div class="form-group">
-                            <label for="card-name">Name on Card</label>
-                            <input type="text" id="card-name" name="card-name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="card-number">Card Number</label>
-                            <input type="text" id="card-number" name="card-number" required pattern="\d{13,16}">
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="expiry">Expiry Date</label>
-                                <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required
-                                    pattern="\d{2}/\d{2}">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="cvv">CVV</label>
-                                <input type="text" id="cvv" name="cvv" required pattern="\d{3,4}">
-                            </div>
-                        </div> -->
-
                         <div class="form-group checkbox">
                             <input type="checkbox" id="save-info" name="save-info">
                             <label for="save-info">Save this information for next time</label>
                         </div>
 
-                        <a href="/src/checkout/thankyou.html" type="submit" class="btn btn-primary"
-                            id="place-order">Place Order</a>
+                        <input type="submit" class="btn btn-primary" id="place-order">Place Order</input>
                     </form>
                 </div>
 

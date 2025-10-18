@@ -1,29 +1,47 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // DOM Elements
-    const paymentForm = document.getElementById('payment-form');
-    const orderItemsContainer = document.querySelector('.order-items');
-    const orderSubtotal = document.getElementById('order-subtotal');
-    const orderShipping = document.getElementById('order-shipping');
-    const orderTax = document.getElementById('order-tax');
-    const orderTotal = document.getElementById('order-total');
-    const stateSelect = document.getElementById('state');
+// DOM Elements
+const paymentForm = document.getElementById('payment-form');
+const orderItemsContainer = document.querySelector('.order-items');
+const orderSubtotal = document.getElementById('order-subtotal');
+const orderShipping = document.getElementById('order-shipping');
+const orderTax = document.getElementById('order-tax');
+const orderTotal = document.getElementById('order-total');
+const stateSelect = document.getElementById('state');
+const usStates = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia',
+    'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri',
+    'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio',
+    'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+    'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
+document.addEventListener('DOMContentLoaded', function () {
     // Load cart from localStorage
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    //Load states dropdown list with values
+    usStates.forEach(state => {
+        const option = document.createElement('option');
+        option.value = state;
+        option.textContent = state;
+        stateSelect.appendChild(option);
+    });
 
-    // US States for dropdown
-    const usStates = [
-        'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-        'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia',
-        'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa',
-        'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland',
-        'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri',
-        'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey',
-        'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio',
-        'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina',
-        'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-        'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-    ];
+
+
+    var OrderSum = JSON.parse(localStorage.getItem('OrderSummary'));
+    console.log(OrderSum);
+    document.getElementById("order-subtotal").textContent = OrderSum[0];
+    document.getElementById("order-shipping").textContent = OrderSum[1];
+    document.getElementById("order-tax").textContent = OrderSum[2];
+    document.getElementById("order-total").textContent = OrderSum[3];
+    // Example: Handle checkout form submission
+    paymentForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const customerName = document.querySelector("#full-name").value;
+        const customerEmail = document.querySelector("#email").value;
+        const orderTotal = OrderSum[3];
+        sendOrderEmail(customerName, customerEmail, orderTotal);
+        alert("Thank you for your purchase! Confirmation email sent.");
+        window.location.href = '/src/checkout/thankyou.html';
+    });
+
 
 
 
@@ -54,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function setupFormValidation() {
         paymentForm.addEventListener('submit', function (e) {
             e.preventDefault();
+
 
             if (this.checkValidity()) {
                 submitOrder();
@@ -132,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
 export function sendOrderEmail(customerName, customerEmail, orderTotal) {
     emailjs.send("service_frq3chr", "template_4535lub", {
         customer_name: customerName,
-        customer_email: customerEmail,
+        email: customerEmail,
         order_total: orderTotal
     }).then(() => {
         console.log("Order confirmation email sent!");
@@ -140,22 +159,3 @@ export function sendOrderEmail(customerName, customerEmail, orderTotal) {
         console.error("Email send error:", error);
     });
 }
-
-var OrderSum = JSON.parse(localStorage.getItem('OrderSummary'));
-
-document.getElementById("order-subtotal").textContent = OrderSum[0];
-document.getElementById("order-shipping").textContent = OrderSum[1];
-document.getElementById("order-tax").textContent = OrderSum[2];
-document.getElementById("order-total").textContent = OrderSum[3];
-// Example: Handle checkout form submission
-document.querySelector("#checkout-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const customerName = document.querySelector("#name").value;
-    const customerEmail = document.querySelector("#email").value;
-    const orderTotal = "R500.00"; // Replace with real cart total from your app
-
-    sendOrderEmail(customerName, customerEmail, orderTotal);
-
-    alert("Thank you for your purchase! Confirmation email sent.");
-});
