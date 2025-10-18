@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const startIndex = (currentPage - 1) * productsPerPage;
         const endIndex = startIndex + productsPerPage;
         const productsToDisplay = filteredProducts.slice(startIndex, endIndex);
-
+        console.log("Fixed Product Price that was causing display errors");
         productsGrid.innerHTML = productsToDisplay.map(product => `
             <div class="product-card">
                 <div class="product-image">
