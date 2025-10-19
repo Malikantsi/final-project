@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const startIndex = (currentPage - 1) * productsPerPage;
         const endIndex = startIndex + productsPerPage;
         var productsToDisplay = filteredProducts.slice(startIndex, endIndex);
-        productsToDisplay = [
+        /*productsToDisplay = [
             {
                 "asin": "B0CSFPL6JN",
                 "product_title": "HEX BOTS Wall Crawler Gecko with Official Wall Climber Technology, Rechargeable Remote Control Robot Kids Toys, Prank Toys for Boys & Girls Ages 4 & Up",
@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 "delivery_info": "FREE delivery Thu, Oct 23 on $35 of items shipped by Amazon Or fastest delivery Tomorrow, Oct 19",
                 "productStatus": "Limited time deal"
             }
-        ]
+        ]*/
         console.log("Fixed Product Price that was causing display errors");
         productsGrid.innerHTML = productsToDisplay.map(product => `
             <div class="product-card">
