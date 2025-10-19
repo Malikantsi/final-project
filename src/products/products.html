@@ -10,8 +10,7 @@
         content="A page that displays all our products and multiple filters can be applied.">
     <meta property="og:image"
         content="https://github.com/Malikantsi/final-project/blob/main/public/images/hero-04.webp">
-    <!-- update later-->
-    <meta property="og:url" content="https://malikantsi.github.io/wdd231/final/index.html"> <!-- update later-->
+    <meta property="og:url" content="https://malikantsi.github.io/src/products/products.html">
     <title>Wonder Finds Toy Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +20,11 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/src/styles/base.css">
+    <link rel="stylesheet" href="/src/styles/mobile.css">
     <script type="module" src="/src/js/product.mjs"></script>
+    <script type="module" src="/src/js/main.js"></script>
+
+
 </head>
 
 <body>
@@ -51,9 +54,12 @@
         </div>
 
         <!-- Navigation Menu -->
+        <button class="mobile-menu-btn active" aria-label="Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
         <nav class="nav-menu">
             <ul>
-                <li><a href="/index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="/src/products/products.html">Shop</a></li>
                 <li><a href="products.html?category=Halloween">Halloween</a></li>
                 <li><a href="products.html?category=gifts">Gifts & Toys</a></li>
@@ -62,8 +68,6 @@
                 <li><a href="/src/aboutUs/about-us.html">About</a></li>
             </ul>
         </nav>
-        <button class="mobile-menu-btn" aria-label="Menu">
-
     </header>
 
     <main class="products-page">

@@ -198,7 +198,126 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderProducts() {
         const startIndex = (currentPage - 1) * productsPerPage;
         const endIndex = startIndex + productsPerPage;
-        const productsToDisplay = filteredProducts.slice(startIndex, endIndex);
+        var productsToDisplay = filteredProducts.slice(startIndex, endIndex);
+        /*productsToDisplay = [
+            {
+                "asin": "B0CSFPL6JN",
+                "product_title": "HEX BOTS Wall Crawler Gecko with Official Wall Climber Technology, Rechargeable Remote Control Robot Kids Toys, Prank Toys for Boys & Girls Ages 4 & Up",
+                "product_price": "$24.97",
+                "product_original_price": "$32.99",
+                "product_star_rating": "4.4",
+                "product_num_ratings": "",
+                "product_image": "https://m.media-amazon.com/images/I/81bJ65CAFIL._AC_UL320_.jpg",
+                "is_prime": true,
+                "amount_sold": "20K+ bought in past month",
+                "delivery_info": "FREE delivery Thu, Oct 23 on $35 of items shipped by Amazon Or fastest delivery Tomorrow, Oct 19",
+                "productStatus": "Best Seller"
+            },
+            {
+                "asin": "B08FCRF2Q3",
+                "product_title": "Kinetic Sand Scents, Ice Cream Treats Playset with 3 Colors Scented Play Sand & 6 Tools, Sensory Toys, Holiday Gifts & Stocking Stuffers for Kids Ages 3 and up",
+                "product_price": "$9.48",
+                "product_original_price": "$15.99",
+                "product_star_rating": "4.7",
+                "product_num_ratings": "",
+                "product_image": "https://m.media-amazon.com/images/I/91M86uflhuL._AC_UL320_.jpg",
+                "is_prime": true,
+                "amount_sold": "7K+ bought in past month",
+                "delivery_info": "FREE delivery Thu, Oct 23 on $35 of items shipped by Amazon Or fastest delivery Tomorrow, Oct 19",
+                "productStatus": "Overall Pick"
+            },
+            {
+                "asin": "B0BGLTYW59",
+                "product_title": "Magnetic Tiles Kids Toys STEM Magnet Toy for Toddler Magnetic Blocks Building Preschool Learning Sensory Montessori Toys for 3+ Year Old Boys and Girls, Safe Creativity Toddler Kids Toy 40PCS",
+                "product_price": "$17.98",
+                "product_original_price": "$29.98",
+                "product_star_rating": "4.8",
+                "product_num_ratings": "",
+                "product_image": "https://m.media-amazon.com/images/I/81a666v83iL._AC_UL320_.jpg",
+                "is_prime": true,
+                "amount_sold": "10K+ bought in past month",
+                "delivery_info": "FREE delivery Thu, Oct 23 on $35 of items shipped by Amazon Or fastest delivery Mon, Oct 20",
+                "productStatus": "Best Seller"
+            },
+            {
+                "asin": "B0FGXMYVYQ",
+                "product_title": "Toddler Toy 10 Pcs Interactive Retriever Robot Dog Toy - Walking & Stuffed Puppy with Stethoscope for Vet Role Play, Educational Toddler Gifts for 3 Year Old Girl",
+                "product_price": "$5.99",
+                "product_original_price": "",
+                "product_star_rating": "4.3",
+                "product_num_ratings": "",
+                "product_image": "https://m.media-amazon.com/images/I/71JNAY+pJmL._AC_UL320_.jpg",
+                "is_prime": true,
+                "amount_sold": "800+ bought in past month",
+                "delivery_info": "FREE delivery Thu, Oct 23 on $35 of items shipped by Amazon Or fastest delivery Tomorrow, Oct 19",
+                "productStatus": "New Arrival Pick"
+            },
+            {
+                "asin": "B0DG2VRFV7",
+                "product_title": "30 Pack Squishy Toys, Kawaii Squishies Party Favors for Kids 4-8 8-12 Treasure Box Toys for Classroom Birthday Xmas Gifts Goodie Bag Mini Animals Mochi Squishy Stress Relief Sensory Toys Random",
+                "product_price": "$7.99",
+                "product_original_price": "$9.99",
+                "product_star_rating": "4.6",
+                "product_num_ratings": "",
+                "product_image": "https://m.media-amazon.com/images/I/71HXqi9myuL._AC_UL320_.jpg",
+                "is_prime": true,
+                "amount_sold": "20K+ bought in past month",
+                "delivery_info": "FREE delivery Thu, Oct 23 on $35 of items shipped by Amazon Or fastest delivery Tomorrow, Oct 19",
+                "productStatus": "Limited time deal"
+            },
+            {
+                "asin": "B01B1V10KA",
+                "product_title": "Melissa & Doug Wooden Scoop & Serve Ice Cream Counter, Pretend Play Store, 28 Toy Food & Play Kitchen Accessories, Preschool Toys for Girls & Boys 3+",
+                "product_price": "$39.97",
+                "product_original_price": "$70.99",
+                "product_star_rating": "4.9",
+                "product_num_ratings": "",
+                "product_image": "https://m.media-amazon.com/images/I/7106ox8f2jL._AC_UL320_.jpg",
+                "is_prime": true,
+                "amount_sold": "10K+ bought in past month",
+                "delivery_info": "FREE delivery Thu, Oct 23 Or fastest delivery Tomorrow, Oct 19",
+                "productStatus": "Best Seller"
+            },
+            {
+                "asin": "B0FTMSQGZ4",
+                "product_title": "Chuckle & Roar The Pop It! Book: Colors",
+                "product_price": "$24.99",
+                "product_original_price": "",
+                "product_star_rating": "",
+                "product_num_ratings": "",
+                "product_image": "https://m.media-amazon.com/images/I/81HiHA9KGNL._AC_UL320_.jpg",
+                "is_prime": true,
+                "amount_sold": "",
+                "delivery_info": "FREE delivery Nov 6 - 18 on $35 of items shipped by Amazon Or fastest delivery Nov 6 - 16",
+                "productStatus": ""
+            },
+            {
+                "asin": "B0CP41C4QN",
+                "product_title": "POTATO HEAD Create Your Family Set with 44 Parts and Pieces, Creative Toddler and Preschool Toys for 2 Year Old Girls and Boys and Up (Amazon Exclusive)",
+                "product_price": "$19.99",
+                "product_original_price": "",
+                "product_star_rating": "4.8",
+                "product_num_ratings": "",
+                "product_image": "https://m.media-amazon.com/images/I/71+v2oqAK3L._AC_UL320_.jpg",
+                "is_prime": true,
+                "amount_sold": "10K+ bought in past month",
+                "delivery_info": "FREE delivery Thu, Oct 23 on $35 of items shipped by Amazon Or fastest delivery Tomorrow, Oct 19",
+                "productStatus": "Best Seller"
+            },
+            {
+                "asin": "B0CC5GTSQF",
+                "product_title": "Goody King Magnetic Blocks |100PCS Magnetic Building Cube Game, Constructions Toys for Boys & Girls Age 3-4, 5 6 7 8 9 10, STEM Montessori Stacking Toy, Sensory Tiles Building Birthday for Toddlers",
+                "product_price": "$21.62",
+                "product_original_price": "$34.99",
+                "product_star_rating": "4.6",
+                "product_num_ratings": "",
+                "product_image": "https://m.media-amazon.com/images/I/91RR+Mh95tL._AC_UL320_.jpg",
+                "is_prime": true,
+                "amount_sold": "3K+ bought in past month",
+                "delivery_info": "FREE delivery Thu, Oct 23 on $35 of items shipped by Amazon Or fastest delivery Tomorrow, Oct 19",
+                "productStatus": "Limited time deal"
+            }
+        ]*/
         console.log("Fixed Product Price that was causing display errors");
         productsGrid.innerHTML = productsToDisplay.map(product => `
             <div class="product-card">

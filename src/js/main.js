@@ -55,13 +55,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // DOM Elements
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const mainNav = document.querySelector('.main-nav');
+const mainNav = document.querySelector('.nav-menu');
 const cartBtn = document.querySelector('.cart-btn');
 const cartCount = document.querySelector('.cart-count');
 
 // Mobile Menu Toggle
 mobileMenuBtn.addEventListener('click', () => {
-    mainNav.classList.toggle('active');
+    mainNav.classList.toggle('show');
+    console.log("I totally agree");
+});
+
+window.addEventListener('resize', () => {
+    const element = document.querySelector('header');
+    var ElementHeight = element.offsetHeight;
+    mainNav.style.top = `${ElementHeight}px`;
 });
 
 
