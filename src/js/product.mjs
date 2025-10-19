@@ -1,5 +1,18 @@
-import { formatPrice, setLocalStorage, getLocalStorage, updateCartCount } from './utils.mjs';
+import { formatPrice, setLocalStorage, getLocalStorage, updateCartCount, setupMobileMenu } from './utils.mjs';
+
+//hambutton
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mainNav = document.querySelector('.nav-menu');
+
+    if (mobileMenuBtn && mainNav) {
+        setupMobileMenu(mobileMenuBtn, mainNav);
+    } else {
+        console.warn('Mobile menu elements not found.');
+    }
+});
 // Products Page Functionality
+
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize variables
     let currentPage = 1;
@@ -70,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
             loadingIndicator.style.display = 'none';
         }
     });
+
 
     // Fetch from Walmart affiliate API (demo mode)
     async function fetchToys() {
@@ -199,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const startIndex = (currentPage - 1) * productsPerPage;
         const endIndex = startIndex + productsPerPage;
         var productsToDisplay = filteredProducts.slice(startIndex, endIndex);
-        /*productsToDisplay = [
+        productsToDisplay = [
             {
                 "asin": "B0CSFPL6JN",
                 "product_title": "HEX BOTS Wall Crawler Gecko with Official Wall Climber Technology, Rechargeable Remote Control Robot Kids Toys, Prank Toys for Boys & Girls Ages 4 & Up",
@@ -317,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 "delivery_info": "FREE delivery Thu, Oct 23 on $35 of items shipped by Amazon Or fastest delivery Tomorrow, Oct 19",
                 "productStatus": "Limited time deal"
             }
-        ]*/
+        ]
         console.log("Fixed Product Price that was causing display errors");
         productsGrid.innerHTML = productsToDisplay.map(product => `
             <div class="product-card">

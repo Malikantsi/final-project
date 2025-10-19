@@ -1,4 +1,4 @@
-import { updateCartCount } from './utils.mjs';
+import { updateCartCount, setupMobileMenu } from './utils.mjs';
 
 
 
@@ -54,22 +54,35 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // DOM Elements
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const mainNav = document.querySelector('.nav-menu');
-const cartBtn = document.querySelector('.cart-btn');
+// const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+// const mainNav = document.querySelector('.nav-menu');
+// const cartBtn = document.querySelector('.cart-btn');
 const cartCount = document.querySelector('.cart-count');
 
 // Mobile Menu Toggle
-mobileMenuBtn.addEventListener('click', () => {
-    mainNav.classList.toggle('show');
-    console.log("I totally agree");
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mainNav = document.querySelector('.nav-menu');
+
+    if (mobileMenuBtn && mainNav) {
+        setupMobileMenu(mobileMenuBtn, mainNav);
+    } else {
+        console.warn('Mobile menu elements not found.');
+    }
 });
 
-window.addEventListener('resize', () => {
-    const element = document.querySelector('header');
-    var ElementHeight = element.offsetHeight;
-    mainNav.style.top = `${ElementHeight}px`;
-});
+// mobileMenuBtn.addEventListener('click', () => {
+//     mainNav.classList.toggle('show');
+// });
+
+// window.addEventListener('resize', () => {
+//     const element = document.querySelector('header');
+//     var ElementHeight = element.offsetHeight;
+//     mainNav.style.top = `${ElementHeight}px`;
+// });
 
 
 

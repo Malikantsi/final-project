@@ -1,3 +1,15 @@
+import { setupMobileMenu } from './utils.mjs';
+//ham button 
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mainNav = document.querySelector('.nav-menu');
+
+    if (mobileMenuBtn && mainNav) {
+        setupMobileMenu(mobileMenuBtn, mainNav);
+    } else {
+        console.warn('Mobile menu elements not found.');
+    }
+});
 // DOM Elements
 const paymentForm = document.getElementById('payment-form');
 const orderItemsContainer = document.querySelector('.order-items');

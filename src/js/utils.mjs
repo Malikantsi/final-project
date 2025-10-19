@@ -21,4 +21,30 @@ export function setLocalStorage(key, data) {
 }
 export function getLocalStorage(key) {
     return JSON.parse(localStorage.getItem(key));
-} 
+}
+
+//hambutton
+
+// utils.mjs
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const mainNav = document.querySelector('.nav-menu');
+const cartBtn = document.querySelector('.cart-btn');
+
+export function setupMobileMenu(mobileMenuBtn, mainNav) {
+    // Toggle menu visibility when button is clicked
+    mobileMenuBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('show');
+    });
+
+    // Adjust menu top position dynamically on resize
+    window.addEventListener('resize', () => {
+        const header = document.querySelector('header');
+        const headerHeight = header.offsetHeight;
+        mainNav.style.top = `${headerHeight}px`;
+    });
+
+    // Run once on load to position correctly
+    const header = document.querySelector('header');
+    const headerHeight = header.offsetHeight;
+    mainNav.style.top = `${headerHeight}px`;
+}
