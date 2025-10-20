@@ -337,7 +337,6 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="product-card">
                 <div class="product-image">
                     <img src="${product.product_image}" alt="${product.product_title}" onerror="this.src='images/placeholder-toy.jpg'">
-                    <a href="/src/products/product-details.html" class="quick-view" data-id="${product.asin}">Quick View</a>
                 </div>
                 <div class="product-info">
                     <h3>${product.product_title}</h3>
@@ -437,10 +436,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Quick view functionality
-    function quickView(e) {
-        const productId = e.target.dataset.id;
-        window.location.href = `product-detail.html?id=${productId}`;
-    }
+    // function quickView(e) {
+    //     const productId = e.target.dataset.id;
+    //     window.location.href = `product-detail.html?id=${productId}`;
+    // }
+
+    //                    /*<a href="/src/products/product-details.html" class="quick-view" data-id="${product.asin}">Quick View</a>*/
+
 
     // Add to cart functionality
     function addToCart(e) {
